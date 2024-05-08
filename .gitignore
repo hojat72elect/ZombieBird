@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+gradle/
+local.properties
+core/build/
+android/build/
+lwjgl3/build/
