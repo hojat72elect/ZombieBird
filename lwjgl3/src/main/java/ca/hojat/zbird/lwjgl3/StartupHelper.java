@@ -1,19 +1,3 @@
-/*
- * Copyright 2020 damios
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at:
- * https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-//Note, the above license and copyright applies to this file only.
-
 package ca.hojat.zbird.lwjgl3;
 
 import org.lwjgl.system.macosx.LibC;
@@ -31,6 +15,7 @@ import java.util.ArrayList;
  * outside the Latin alphabet, a common cause of startup crashes.
  * <br>
  * <a href="https://jvm-gaming.org/t/starting-jvm-on-mac-with-xstartonfirstthread-programmatically/57547">Based on this java-gaming.org post by kappa</a>
+ *
  * @author damios
  */
 public class StartupHelper {
@@ -58,12 +43,11 @@ public class StartupHelper {
      * }
      * </code></pre>
      *
-     * @param redirectOutput
-     *            whether the output of the new JVM should be rerouted to the
-     *            old JVM, so it can be accessed in the same place; keeps the
-     *            old JVM running if enabled
+     * @param redirectOutput whether the output of the new JVM should be rerouted to the
+     *                       old JVM, so it can be accessed in the same place; keeps the
+     *                       old JVM running if enabled
      * @return whether a new JVM was started and thus no code should be executed
-     *         in this one
+     * in this one
      */
     public static boolean startNewJvmIfRequired(boolean redirectOutput) {
         String osName = System.getProperty("os.name").toLowerCase();
@@ -171,7 +155,7 @@ public class StartupHelper {
      * </pre>
      *
      * @return whether a new JVM was started and thus no code should be executed
-     *         in this one
+     * in this one
      */
     public static boolean startNewJvmIfRequired() {
         return startNewJvmIfRequired(true);
