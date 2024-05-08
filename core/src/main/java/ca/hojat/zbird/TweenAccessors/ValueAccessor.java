@@ -1,4 +1,4 @@
-package com.achmadqomarudin.TweenAccessors;
+package ca.hojat.zbird.TweenAccessors;
 
 import aurelienribon.tweenengine.TweenAccessor;
 

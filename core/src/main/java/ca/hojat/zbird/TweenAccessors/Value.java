@@ -1,4 +1,4 @@
-package com.achmadqomarudin.TweenAccessors;
+package ca.hojat.zbird.TweenAccessors;
 
 public class Value {
     private float val = 1;
