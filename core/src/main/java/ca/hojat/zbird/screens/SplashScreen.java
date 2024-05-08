@@ -11,7 +11,6 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenEquations;
 import aurelienribon.tweenengine.TweenManager;
-import ca.hojat.zbird.Main;
 import ca.hojat.zbird.TweenAccessors.SpriteAccessor;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
 
@@ -21,9 +20,9 @@ public class SplashScreen implements Screen {
     private TweenManager manager;
     private SpriteBatch batcher;
     private Sprite sprite;
-    private Main game;
+    private ca.hojat.zbird.ZombieFlappyBird game;
 
-    public SplashScreen(Main game) {
+    public SplashScreen(ca.hojat.zbird.ZombieFlappyBird game) {
         this.game = game;
     }
 
