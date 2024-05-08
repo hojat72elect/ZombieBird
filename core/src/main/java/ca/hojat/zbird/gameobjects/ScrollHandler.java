@@ -1,16 +1,16 @@
-package com.achmadqomarudin.gameobjects;
+package ca.hojat.zbird.gameobjects;
 
-import com.achmadqomarudin.gameworld.GameWorld;
-import com.achmadqomarudin.zbhelpers.AssetLoader;
+import ca.hojat.zbird.gameworld.GameWorld;
+import ca.hojat.zbird.zbhelpers.AssetLoader;
 
 public class ScrollHandler {
 
     private Grass frontGrass, backGrass;
-    private com.achmadqomarudin.gameobjects.Pipe pipe1, pipe2, pipe3;
+    private Pipe pipe1, pipe2, pipe3;
     public static final int SCROLL_SPEED = -59;
     public static final int PIPE_GAP = 49;
 
-    private com.achmadqomarudin.gameworld.GameWorld gameWorld;
+    private ca.hojat.zbird.gameworld.GameWorld gameWorld;
 
     public ScrollHandler(GameWorld gameWorld, float yPos) {
         this.gameWorld = gameWorld;
@@ -18,10 +18,10 @@ public class ScrollHandler {
         backGrass = new Grass(frontGrass.getTailX(), yPos, 143, 11,
                 SCROLL_SPEED);
 
-        pipe1 = new com.achmadqomarudin.gameobjects.Pipe(210, 0, 22, 60, SCROLL_SPEED, yPos);
-        pipe2 = new com.achmadqomarudin.gameobjects.Pipe(pipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED,
+        pipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED, yPos);
+        pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED,
                 yPos);
-        pipe3 = new com.achmadqomarudin.gameobjects.Pipe(pipe2.getTailX() + PIPE_GAP, 0, 22, 60, SCROLL_SPEED,
+        pipe3 = new Pipe(pipe2.getTailX() + PIPE_GAP, 0, 22, 60, SCROLL_SPEED,
                 yPos);
     }
 
@@ -85,13 +85,13 @@ public class ScrollHandler {
                 + bird.getWidth()) {
             addScore(1);
             pipe1.setScored(true);
-            com.achmadqomarudin.zbhelpers.AssetLoader.coin.play();
+            AssetLoader.coin.play();
         } else if (!pipe2.isScored()
                 && pipe2.getX() + (pipe2.getWidth() / 2) < bird.getX()
                 + bird.getWidth()) {
             addScore(1);
             pipe2.setScored(true);
-            com.achmadqomarudin.zbhelpers.AssetLoader.coin.play();
+            AssetLoader.coin.play();
 
         } else if (!pipe3.isScored()
                 && pipe3.getX() + (pipe3.getWidth() / 2) < bird.getX()
@@ -118,11 +118,11 @@ public class ScrollHandler {
         return backGrass;
     }
 
-    public com.achmadqomarudin.gameobjects.Pipe getPipe1() {
+    public Pipe getPipe1() {
         return pipe1;
     }
 
-    public com.achmadqomarudin.gameobjects.Pipe getPipe2() {
+    public Pipe getPipe2() {
         return pipe2;
     }
 

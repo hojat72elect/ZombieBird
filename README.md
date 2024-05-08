@@ -1,58 +1,35 @@
 # ZombieBird
 
-[![Platform](https://img.shields.io/badge/platform-Android-yellow.svg)](https://www.android.com)
-[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Gradle Version](https://img.shields.io/badge/gradle-4.0-green.svg)](https://docs.gradle.org/current/release-notes)
-[![Awesome Badge](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://java-lang.github.io/awesome-java)
+A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
-🎮 This is Android Studio game project with LibGDX inside. It is actually flappy bird clone game from Kilobolt tutorial. Well it's not mine. I created this repository just for save the source code. You can go to http://www.kilobolt.com/zombie-bird-tutorial-flappy-bird-remake.html to see the original creator.
+This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
 
-# Source
-Repo to demonstrate ZombieBird in Android app. This is a follow up on the web at :
+## Platforms
 
-[ZombieBird Tutorial FlappyBird Remake](http://www.kilobolt.com/zombie-bird-tutorial-flappy-bird-remake.html)
+- `core`: Main module with the application logic shared by all platforms.
+- `lwjgl3`: Primary desktop platform using LWJGL3.
+- `android`: Android mobile platform. Needs Android SDK.
 
-# Demo App
+## Gradle
 
-<p align="center">
-  <a href="https://github.com/achmadqomarudin/ZombieBird/releases/latest/download/app-demo.apk">
-    <img src="https://www.inspirefm.org/wp-content/uploads/button-apk.png" height="100">
-  </a>
-</p>
+This project uses [Gradle](https://gradle.org/) to manage dependencies.
+The Gradle wrapper was included, so you can run Gradle tasks using `gradlew.bat` or `./gradlew` commands.
+Useful Gradle tasks and flags:
 
-<table style="width:100%">
-  <tr>
-    <th>Example 1</th>
-    <th>Example 2</th>
-  </tr>
-  <tr>
-    <td><img src="screenshots/1.gif"/></td>
-    <td><img src="screenshots/2.jpg"/></td>
-  </tr>
-  <tr>
-    <th>Example 3</th>
-    <th>Example 4</th>
-  </tr>
-  <tr>
-    <td><img src="screenshots/3.jpg"/></td>
-    <td><img src="screenshots/4.jpg"/></td>
-  </tr>
-</table>
+- `--continue`: when using this flag, errors will not stop the tasks from running.
+- `--daemon`: thanks to this flag, Gradle daemon will be used to run chosen tasks.
+- `--offline`: when using this flag, cached dependency archives will be used.
+- `--refresh-dependencies`: this flag forces validation of all dependencies. Useful for snapshot versions.
+- `android:lint`: performs Android project validation.
+- `build`: builds sources and archives of every project.
+- `cleanEclipse`: removes Eclipse project data.
+- `cleanIdea`: removes IntelliJ project data.
+- `clean`: removes `build` folders, which store compiled classes and built archives.
+- `eclipse`: generates Eclipse project data.
+- `idea`: generates IntelliJ project data.
+- `lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/lib`.
+- `lwjgl3:run`: starts the application.
+- `test`: runs unit tests (if any).
 
-# License
-
-```
-    Copyright (C) Achmad Qomarudin
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-```
+Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
+For example, `core:clean` removes `build` folder only from the `core` project.

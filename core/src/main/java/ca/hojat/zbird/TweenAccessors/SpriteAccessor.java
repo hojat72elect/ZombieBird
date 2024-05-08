@@ -1,4 +1,4 @@
-package com.achmadqomarudin.TweenAccessors;
+package ca.hojat.zbird.TweenAccessors;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 

@@ -1,8 +1,5 @@
-package com.achmadqomarudin.screens;
+package ca.hojat.zbird.screens;
 
-import com.achmadqomarudin.TweenAccessors.SpriteAccessor;
-import com.achmadqomarudin.zbhelpers.AssetLoader;
-import com.achmadqomarudin.zombiebird.ZBGame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,6 +11,9 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenEquations;
 import aurelienribon.tweenengine.TweenManager;
+import ca.hojat.zbird.Main;
+import ca.hojat.zbird.TweenAccessors.SpriteAccessor;
+import ca.hojat.zbird.zbhelpers.AssetLoader;
 
 
 public class SplashScreen implements Screen {
@@ -21,9 +21,9 @@ public class SplashScreen implements Screen {
     private TweenManager manager;
     private SpriteBatch batcher;
     private Sprite sprite;
-    private com.achmadqomarudin.zombiebird.ZBGame game;
+    private Main game;
 
-    public SplashScreen(ZBGame game) {
+    public SplashScreen(Main game) {
         this.game = game;
     }
 
@@ -45,7 +45,7 @@ public class SplashScreen implements Screen {
     }
 
     private void setupTween() {
-        Tween.registerAccessor(Sprite.class, new com.achmadqomarudin.TweenAccessors.SpriteAccessor());
+        Tween.registerAccessor(Sprite.class, new SpriteAccessor());
         manager = new TweenManager();
 
         TweenCallback cb = new TweenCallback() {

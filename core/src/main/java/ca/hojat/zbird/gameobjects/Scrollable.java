@@ -1,4 +1,4 @@
-package com.achmadqomarudin.gameobjects;
+package ca.hojat.zbird.gameobjects;
 
 import com.badlogic.gdx.math.Vector2;
 
