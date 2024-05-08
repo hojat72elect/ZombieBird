@@ -1,0 +1,15 @@
+Thumbs.db
+fall.wav
+flap.wav
+logo.png
+libgdx.png
+coin.wav
+texture.png
+whitetext.png
+shadow.png
+text.fnt
+ic_zombie_bird.png
+whitetext.fnt
+text.png
+dead.wav
+shadow.fnt

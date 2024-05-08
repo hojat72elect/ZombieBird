@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":lwjgl3:main" external.linked.project.path="$MODULE_DIR$/../../../lwjgl3" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="ZombieBird" external.system.module.type="sourceSet" external.system.module.version="1.0.0" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../../lwjgl3/build/classes/java/main" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../lwjgl3/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../lwjgl3/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../lwjgl3/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Gradle: ">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../core/libs/tween-engine-api.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Gradle: com.badlogicgames.gdx:gdx-backend-lwjgl3:1.12.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.badlogicgames.gdx:gdx-platform:natives-desktop:1.12.1" level="project" />
+    <orderEntry type="module" module-name="ZombieBird.core.main" />
+    <orderEntry type="module-library">
+      <library name="Gradle: com.badlogicgames.gdx:gdx:1.12.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.12.1/a2d066c09329c457045c284c42d6f37122840aa/gdx-1.12.1.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.12.1/942ca06f18b83f84a35dfa6e9bd2022c39155048/gdx-1.12.1-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.12.1/ab23b5d3982f3d89ba30f1c4db509aa7568c3024/gdx-1.12.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:natives-linux:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:natives-linux-arm32:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:natives-linux-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:natives-macos:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:natives-macos-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:natives-windows:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:natives-windows-x86:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:natives-linux:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:natives-linux-arm32:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:natives-linux-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:natives-macos:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:natives-macos-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:natives-windows:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-jemalloc:natives-windows-x86:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:natives-linux:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:natives-linux-arm32:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:natives-linux-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:natives-macos:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:natives-macos-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:natives-windows:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:natives-windows-x86:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:natives-linux:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:natives-linux-arm32:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:natives-linux-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:natives-macos:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:natives-macos-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:natives-windows:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:natives-windows-x86:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:natives-linux:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:natives-linux-arm32:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:natives-linux-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:natives-macos:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:natives-macos-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:natives-windows:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:natives-windows-x86:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:natives-linux:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:natives-linux-arm32:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:natives-linux-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:natives-macos:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:natives-macos-arm64:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:natives-windows:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:natives-windows-x86:3.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.badlogicgames.jlayer:jlayer:1.0.1-gdx" level="project" />
+    <orderEntry type="library" name="Gradle: org.jcraft:jorbis:0.0.17" level="project" />
+    <orderEntry type="module-library">
+      <library name="Gradle: com.badlogicgames.gdx:gdx-jnigen-loader:2.3.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.3.1/2d472f69243631fbcb3d4c3f93dd2e137a6cb084/gdx-jnigen-loader-2.3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.3.1/fb385783eebaf04e9f48392dd76e0b46575d5647/gdx-jnigen-loader-2.3.1-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-jnigen-loader/2.3.1/8228a038af98f2d0fa7b23ea7b4fa330af832305/gdx-jnigen-loader-2.3.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
