@@ -1,10 +1,10 @@
-package com.achmadqomarudin.ui;
+package ca.hojat.zbird.ui;
 
-import com.achmadqomarudin.zbhelpers.AssetLoader;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-
+import ca.hojat.zbird.zbhelpers.AssetLoader;
 
 public class SimpleButton {
     private float x, y, width, height;
