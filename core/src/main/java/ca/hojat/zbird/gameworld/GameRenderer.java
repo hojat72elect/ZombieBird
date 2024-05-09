@@ -1,11 +1,8 @@
 package ca.hojat.zbird.gameworld;
 
-import ca.hojat.zbird.tweenaccessors.Value;
-import ca.hojat.zbird.tweenaccessors.ValueAccessor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -19,24 +16,23 @@ import aurelienribon.tweenengine.TweenManager;
 import ca.hojat.zbird.gameobjects.Bird;
 import ca.hojat.zbird.gameobjects.Grass;
 import ca.hojat.zbird.gameobjects.Pipe;
-import ca.hojat.zbird.gameobjects.ScrollHandler;
+import ca.hojat.zbird.tweenaccessors.Value;
+import ca.hojat.zbird.tweenaccessors.ValueAccessor;
 import ca.hojat.zbird.ui.SimpleButton;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
 import ca.hojat.zbird.zbhelpers.InputHandler;
 
 public class GameRenderer {
 
-    private GameWorld myWorld;
-    private OrthographicCamera cam;
-    private ShapeRenderer shapeRenderer;
+    private final GameWorld myWorld;
+    private final ShapeRenderer shapeRenderer;
 
-    private SpriteBatch batcher;
+    private final SpriteBatch batcher;
 
-    private int midPointY;
+    private final int midPointY;
 
     // Game Objects
     private Bird bird;
-    private ScrollHandler scroller;
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
 
@@ -47,11 +43,11 @@ public class GameRenderer {
 
     // Tween stuff
     private TweenManager manager;
-    private Value alpha = new Value();
+    private final Value alpha = new Value();
 
     // Buttons
-    private List<SimpleButton> menuButtons;
-    private Color transitionColor;
+    private final List<SimpleButton> menuButtons;
+    private final Color transitionColor;
 
     public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
         myWorld = world;
@@ -60,7 +56,7 @@ public class GameRenderer {
         this.menuButtons = ((InputHandler) Gdx.input.getInputProcessor())
                 .getMenuButtons();
 
-        cam = new OrthographicCamera();
+        com.badlogic.gdx.graphics.OrthographicCamera cam = new com.badlogic.gdx.graphics.OrthographicCamera();
         cam.setToOrtho(true, 136, gameHeight);
 
         batcher = new SpriteBatch();
@@ -77,7 +73,7 @@ public class GameRenderer {
 
     private void initGameObjects() {
         bird = myWorld.getBird();
-        scroller = myWorld.getScroller();
+        ca.hojat.zbird.gameobjects.ScrollHandler scroller = myWorld.getScroller();
         frontGrass = scroller.getFrontGrass();
         backGrass = scroller.getBackGrass();
         pipe1 = scroller.getPipe1();
@@ -169,7 +165,7 @@ public class GameRenderer {
     }
 
     private void drawMenuUI() {
-        batcher.draw(zbLogo, 136 / 2 - 56, midPointY - 50,
+        batcher.draw(zbLogo, (float) 136 / 2 - 56, midPointY - 50,
                 zbLogo.getRegionWidth() / 1.2f, zbLogo.getRegionHeight() / 1.2f);
 
         for (SimpleButton button : menuButtons) {

@@ -1,16 +1,14 @@
-package ca.hojat.zbird.tweenaccessors;
+package ca.hojat.zbird.tweenaccessors
 
-import aurelienribon.tweenengine.TweenAccessor;
+import aurelienribon.tweenengine.TweenAccessor
 
-public class ValueAccessor implements TweenAccessor<Value> {
-    @Override
-    public int getValues(Value target, int tweenType, float[] returnValues) {
-        returnValues[0] = target.getValue();
-        return 1;
+class ValueAccessor : TweenAccessor<Value> {
+    override fun getValues(target: Value, tweenType: Int, returnValues: FloatArray): Int {
+        returnValues[0] = target.value
+        return 1
     }
 
-    @Override
-    public void setValues(Value target, int tweenType, float[] newValues) {
-        target.setValue(newValues[0]);
+    override fun setValues(target: Value, tweenType: Int, newValues: FloatArray) {
+        target.value = newValues[0]
     }
 }
