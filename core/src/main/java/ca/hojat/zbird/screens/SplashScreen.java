@@ -8,13 +8,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import org.jetbrains.annotations.Nullable;
 
-import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenEquations;
 import aurelienribon.tweenengine.TweenManager;
-import ca.hojat.zbird.tweenaccessors.SpriteAccessor;
 import ca.hojat.zbird.ZombieFlappyBird;
+import ca.hojat.zbird.tweenaccessors.SpriteAccessor;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
 
 public class SplashScreen implements Screen {
@@ -62,10 +61,13 @@ public class SplashScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        assert manager != null;
         manager.update(delta);
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        assert batcher != null;
         batcher.begin();
+        assert sprite != null;
         sprite.draw(batcher);
         batcher.end();
     }
