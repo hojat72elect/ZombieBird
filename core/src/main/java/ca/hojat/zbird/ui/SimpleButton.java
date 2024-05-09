@@ -7,12 +7,15 @@ import com.badlogic.gdx.math.Rectangle;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
 
 public class SimpleButton {
-    private float x, y, width, height;
+    private final float x;
+    private final float y;
+    private final float width;
+    private final float height;
 
-    private TextureRegion buttonUp;
-    private TextureRegion buttonDown;
+    private final TextureRegion buttonUp;
+    private final TextureRegion buttonDown;
 
-    private Rectangle bounds;
+    private final Rectangle bounds;
 
     private boolean isPressed = false;
 
@@ -29,10 +32,6 @@ public class SimpleButton {
 
     }
 
-    public boolean isClicked(int screenX, int screenY) {
-        return bounds.contains(screenX, screenY);
-    }
-
     public void draw(SpriteBatch batcher) {
         if (isPressed) {
             batcher.draw(buttonDown, x, y, width, height);
@@ -41,14 +40,12 @@ public class SimpleButton {
         }
     }
 
-    public boolean isTouchDown(int screenX, int screenY) {
+    public void isTouchDown(int screenX, int screenY) {
 
         if (bounds.contains(screenX, screenY)) {
             isPressed = true;
-            return true;
         }
 
-        return false;
     }
 
     public boolean isTouchUp(int screenX, int screenY) {

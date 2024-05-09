@@ -1,7 +1,7 @@
 package ca.hojat.zbird.gameworld;
 
-import ca.hojat.zbird.TweenAccessors.Value;
-import ca.hojat.zbird.TweenAccessors.ValueAccessor;
+import ca.hojat.zbird.tweenaccessors.Value;
+import ca.hojat.zbird.tweenaccessors.ValueAccessor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;

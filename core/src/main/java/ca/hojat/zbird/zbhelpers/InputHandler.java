@@ -11,15 +11,15 @@ import java.util.List;
 
 public class InputHandler implements InputProcessor {
 
-    private Bird myBird;
-    private GameWorld myWorld;
+    private final Bird myBird;
+    private final GameWorld myWorld;
 
-    private List<SimpleButton> menuButtons;
+    private final List<SimpleButton> menuButtons;
 
-    private SimpleButton playButton;
+    private final SimpleButton playButton;
 
-    private float scaleFactorX;
-    private float scaleFactorY;
+    private final float scaleFactorX;
+    private final float scaleFactorY;
 
     public InputHandler(GameWorld myWorld, float scaleFactorX,
                         float scaleFactorY) {
@@ -31,9 +31,9 @@ public class InputHandler implements InputProcessor {
         this.scaleFactorX = scaleFactorX;
         this.scaleFactorY = scaleFactorY;
 
-        menuButtons = new ArrayList<SimpleButton>();
+        menuButtons = new ArrayList<>();
         playButton = new SimpleButton(
-                136 / 2 - (AssetLoader.playButtonUp.getRegionWidth() / 2),
+                (float) 136 / 2 - ((float) ca.hojat.zbird.zbhelpers.AssetLoader.playButtonUp.getRegionWidth() / 2),
                 midPointY + 50, 29, 16, AssetLoader.playButtonUp,
                 AssetLoader.playButtonDown);
         menuButtons.add(playButton);

@@ -13,7 +13,7 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenEquations;
 import aurelienribon.tweenengine.TweenManager;
-import ca.hojat.zbird.TweenAccessors.SpriteAccessor;
+import ca.hojat.zbird.tweenaccessors.SpriteAccessor;
 import ca.hojat.zbird.ZombieFlappyBird;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
 
@@ -52,12 +52,7 @@ public class SplashScreen implements Screen {
         Tween.registerAccessor(Sprite.class, new SpriteAccessor());
         manager = new TweenManager();
 
-        TweenCallback cb = new TweenCallback() {
-            @Override
-            public void onEvent(int type, BaseTween<?> source) {
-                game.setScreen(new GameScreen());
-            }
-        };
+        TweenCallback cb = (type, source) -> game.setScreen(new ca.hojat.zbird.screens.GameScreen());
 
         Tween.to(sprite, SpriteAccessor.ALPHA, 1.8f).target(1)
                 .ease(TweenEquations.easeInOutQuad).repeatYoyo(1, .9f)

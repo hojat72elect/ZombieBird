@@ -1,4 +1,4 @@
-package ca.hojat.zbird.TweenAccessors;
+package ca.hojat.zbird.tweenaccessors;
 
 public class Value {
     private float val = 1;
