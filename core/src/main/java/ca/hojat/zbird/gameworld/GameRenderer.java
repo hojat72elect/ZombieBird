@@ -30,24 +30,20 @@ public class GameRenderer {
     private final SpriteBatch batcher;
 
     private final int midPointY;
-
+    private final AssetValue alpha = new AssetValue();
+    // Buttons
+    private final List<ca.hojat.zbird.ui.SimpleButton> menuButtons;
+    private final Color transitionColor;
     // Game Objects
     private Bird bird;
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
-
     // Game Assets
     private TextureRegion bg, grass, birdMid, skullUp, skullDown, bar, ready,
             zbLogo, gameOver, highScore, scoreboard, star, noStar, retry;
     private Animation birdAnimation;
-
     // Tween stuff
     private TweenManager manager;
-    private final AssetValue alpha = new AssetValue();
-
-    // Buttons
-    private final List<ca.hojat.zbird.ui.SimpleButton> menuButtons;
-    private final Color transitionColor;
 
     public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
         myWorld = world;
@@ -165,7 +161,7 @@ public class GameRenderer {
     }
 
     private void drawMenuUI() {
-        batcher.draw(zbLogo,  136f / 2 - 56, midPointY - 50,
+        batcher.draw(zbLogo, 136f / 2 - 56, midPointY - 50,
                 zbLogo.getRegionWidth() / 1.2f, zbLogo.getRegionHeight() / 1.2f);
 
         for (SimpleButton button : menuButtons) {

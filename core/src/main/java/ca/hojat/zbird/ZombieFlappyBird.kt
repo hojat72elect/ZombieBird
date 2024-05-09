@@ -1,19 +1,17 @@
-package ca.hojat.zbird;
+package ca.hojat.zbird
 
-import ca.hojat.zbird.zbhelpers.AssetLoader;
-import ca.hojat.zbird.screens.SplashScreen;
+import ca.hojat.zbird.screens.SplashScreen
+import ca.hojat.zbird.zbhelpers.AssetLoader
+import com.badlogic.gdx.Game
 
-
-public class ZombieFlappyBird extends com.badlogic.gdx.Game {
-    @Override
-    public void create() {
-        AssetLoader.load();
-        setScreen(new SplashScreen(this));
+class ZombieFlappyBird : Game() {
+    override fun create() {
+        AssetLoader.load()
+        setScreen(SplashScreen(this))
     }
 
-    @Override
-    public void dispose() {
-        super.dispose();
-        AssetLoader.dispose();
+    override fun dispose() {
+        super.dispose()
+        AssetLoader.dispose()
     }
 }
