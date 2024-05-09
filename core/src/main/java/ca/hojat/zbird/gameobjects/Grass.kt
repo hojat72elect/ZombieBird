@@ -1,15 +1,18 @@
-package ca.hojat.zbird.gameobjects;
+package ca.hojat.zbird.gameobjects
 
-public class Grass extends Scrollable {
+/**
+ *  When Grass's constructor is invoked, invoke the parent's constructor (Scrollable).
+ */
+class Grass(
+    x: Float,
+    y: Float,
+    width: Int,
+    height: Int,
+    scrollSpeed: Float
+) : Scrollable(x, y, width, height, scrollSpeed) {
 
-    // When Grass's constructor is invoked, invoke the super (Scrollable) constructor
-    public Grass(float x, float y, int width, int height, float scrollSpeed) {
-        super(x, y, width, height, scrollSpeed);
+    fun onRestart(x: Float, scrollSpeed: Float) {
+        position.x = x
+        velocity.x = scrollSpeed
     }
-
-    public void onRestart(float x, float scrollSpeed) {
-        position.x = x;
-        velocity.x = scrollSpeed;
-    }
-
 }
