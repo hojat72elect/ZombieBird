@@ -165,7 +165,7 @@ public class GameRenderer {
     }
 
     private void drawMenuUI() {
-        batcher.draw(zbLogo, (float) 136 / 2 - 56, midPointY - 50,
+        batcher.draw(zbLogo,  136f / 2 - 56, midPointY - 50,
                 zbLogo.getRegionWidth() / 1.2f, zbLogo.getRegionHeight() / 1.2f);
 
         for (SimpleButton button : menuButtons) {

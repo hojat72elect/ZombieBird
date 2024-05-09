@@ -6,19 +6,19 @@ import com.badlogic.gdx.math.Vector2;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
 
 public class Bird {
-    private Vector2 position;
-    private Vector2 velocity;
-    private Vector2 acceleration;
+    private final Vector2 position;
+    private final Vector2 velocity;
+    private final Vector2 acceleration;
 
     private float rotation;
-    private int width;
-    private float height;
+    private final int width;
+    private final float height;
 
-    private float originalY;
+    private final float originalY;
 
     private boolean isAlive;
 
-    private Circle boundingCircle;
+    private final Circle boundingCircle;
 
     public Bird(float x, float y, int width, int height) {
         this.width = width;

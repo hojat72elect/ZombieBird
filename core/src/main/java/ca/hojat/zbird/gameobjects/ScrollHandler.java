@@ -5,12 +5,15 @@ import ca.hojat.zbird.zbhelpers.AssetLoader;
 
 public class ScrollHandler {
 
-    private Grass frontGrass, backGrass;
-    private Pipe pipe1, pipe2, pipe3;
+    private final Grass frontGrass;
+    private final Grass backGrass;
+    private final Pipe pipe1;
+    private final Pipe pipe2;
+    private final Pipe pipe3;
     public static final int SCROLL_SPEED = -59;
     public static final int PIPE_GAP = 49;
 
-    private ca.hojat.zbird.gameworld.GameWorld gameWorld;
+    private final GameWorld gameWorld;
 
     public ScrollHandler(GameWorld gameWorld, float yPos) {
         this.gameWorld = gameWorld;
@@ -81,22 +84,22 @@ public class ScrollHandler {
     public boolean collides(Bird bird) {
 
         if (!pipe1.isScored()
-                && pipe1.getX() + (pipe1.getWidth() / 2) < bird.getX()
+                && pipe1.getX() + (pipe1.getWidth() / 2f) < bird.getX()
                 + bird.getWidth()) {
-            addScore(1);
+            addScore();
             pipe1.setScored(true);
             AssetLoader.coin.play();
         } else if (!pipe2.isScored()
-                && pipe2.getX() + (pipe2.getWidth() / 2) < bird.getX()
+                && pipe2.getX() + (pipe2.getWidth() / 2f) < bird.getX()
                 + bird.getWidth()) {
-            addScore(1);
+            addScore();
             pipe2.setScored(true);
             AssetLoader.coin.play();
 
         } else if (!pipe3.isScored()
-                && pipe3.getX() + (pipe3.getWidth() / 2) < bird.getX()
+                && pipe3.getX() + (pipe3.getWidth() / 2f) < bird.getX()
                 + bird.getWidth()) {
-            addScore(1);
+            addScore();
             pipe3.setScored(true);
             AssetLoader.coin.play();
 
@@ -106,8 +109,8 @@ public class ScrollHandler {
                 .collides(bird));
     }
 
-    private void addScore(int increment) {
-        gameWorld.addScore(increment);
+    private void addScore() {
+        gameWorld.addScore(1);
     }
 
     public Grass getFrontGrass() {

@@ -8,12 +8,12 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class GameWorld {
 
-    private Bird bird;
-    private ScrollHandler scroller;
-    private Rectangle ground;
+    private final Bird bird;
+    private final ScrollHandler scroller;
+    private final Rectangle ground;
     private int score = 0;
     private float runTime = 0;
-    private int midPointY;
+    private final int midPointY;
     private GameRenderer renderer;
 
     private GameState currentState;

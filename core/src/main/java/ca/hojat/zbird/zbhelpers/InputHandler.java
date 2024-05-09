@@ -33,7 +33,7 @@ public class InputHandler implements InputProcessor {
 
         menuButtons = new ArrayList<>();
         playButton = new SimpleButton(
-                (float) 136 / 2 - ((float) ca.hojat.zbird.zbhelpers.AssetLoader.playButtonUp.getRegionWidth() / 2),
+                 136f / 2 - (AssetLoader.playButtonUp.getRegionWidth() / 2f),
                 midPointY + 50, 29, 16, AssetLoader.playButtonUp,
                 AssetLoader.playButtonDown);
         menuButtons.add(playButton);

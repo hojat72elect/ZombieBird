@@ -7,14 +7,17 @@ import java.util.Random;
 
 public class Pipe extends Scrollable {
 
-    private Random r;
+    private final Random r;
 
-    private Rectangle skullUp, skullDown, barUp, barDown;
+    private final Rectangle skullUp;
+    private final Rectangle skullDown;
+    private final Rectangle barUp;
+    private final Rectangle barDown;
 
     public static final int VERTICAL_GAP = 45;
     public static final int SKULL_WIDTH = 24;
     public static final int SKULL_HEIGHT = 11;
-    private float groundY;
+    private final float groundY;
 
     private boolean isScored = false;
 
@@ -51,9 +54,9 @@ public class Pipe extends Scrollable {
         // with respect to its bar).
 
         // This shift is equivalent to: (SKULL_WIDTH - width) / 2
-        skullUp.set(position.x - (SKULL_WIDTH - width) / 2, position.y + height
+        skullUp.set(position.x - (float) (SKULL_WIDTH - width) / 2, position.y + height
                 - SKULL_HEIGHT, SKULL_WIDTH, SKULL_HEIGHT);
-        skullDown.set(position.x - (SKULL_WIDTH - width) / 2, barDown.y,
+        skullDown.set(position.x - (float) (SKULL_WIDTH - width) / 2, barDown.y,
                 SKULL_WIDTH, SKULL_HEIGHT);
 
     }
@@ -70,22 +73,6 @@ public class Pipe extends Scrollable {
     public void onRestart(float x, float scrollSpeed) {
         velocity.x = scrollSpeed;
         reset(x);
-    }
-
-    public Rectangle getSkullUp() {
-        return skullUp;
-    }
-
-    public Rectangle getSkullDown() {
-        return skullDown;
-    }
-
-    public Rectangle getBarUp() {
-        return barUp;
-    }
-
-    public Rectangle getBarDown() {
-        return barDown;
     }
 
     public boolean collides(Bird bird) {

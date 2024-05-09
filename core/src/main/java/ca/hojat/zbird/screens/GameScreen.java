@@ -8,8 +8,8 @@ import com.badlogic.gdx.Screen;
 
 public class GameScreen implements Screen{
 
-    private GameWorld world;
-    private GameRenderer renderer;
+    private final GameWorld world;
+    private final GameRenderer renderer;
     private float runTime;
 
     // This is the constructor, not the class declaration
