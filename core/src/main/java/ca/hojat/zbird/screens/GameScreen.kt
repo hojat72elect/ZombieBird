@@ -1,60 +1,54 @@
-package ca.hojat.zbird.screens;
+package ca.hojat.zbird.screens
 
-import ca.hojat.zbird.gameworld.GameRenderer;
-import ca.hojat.zbird.gameworld.GameWorld;
-import ca.hojat.zbird.zbhelpers.InputHandler;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import ca.hojat.zbird.gameworld.GameRenderer
+import ca.hojat.zbird.gameworld.GameWorld
+import ca.hojat.zbird.zbhelpers.InputHandler
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Screen
 
-public class GameScreen implements Screen{
+class GameScreen : Screen {
+    private val world: GameWorld
+    private val renderer: GameRenderer
+    private var runTime = 0f
 
-    private final GameWorld world;
-    private final GameRenderer renderer;
-    private float runTime;
+    init {
+        val screenWidth = Gdx.graphics.width.toFloat()
+        val screenHeight = Gdx.graphics.height.toFloat()
+        val gameWidth = 136f
+        val gameHeight = screenHeight / (screenWidth / gameWidth)
+        val midPointY = (gameHeight / 2).toInt()
 
-    // This is the constructor, not the class declaration
-    public GameScreen() {
-
-        float screenWidth = Gdx.graphics.getWidth();
-        float screenHeight = Gdx.graphics.getHeight();
-        float gameWidth = 136;
-        float gameHeight = screenHeight / (screenWidth / gameWidth);
-        int midPointY = (int) (gameHeight / 2);
-
-        world = new GameWorld(midPointY);
-        Gdx.input.setInputProcessor(new InputHandler(world, screenWidth / gameWidth, screenHeight / gameHeight));
-        renderer = new GameRenderer(world, (int) gameHeight, midPointY);
-        world.setRenderer(renderer);
+        world = GameWorld(midPointY)
+        Gdx.input.inputProcessor = InputHandler(
+            world,
+            screenWidth / gameWidth,
+            screenHeight / gameHeight
+        )
+        renderer = GameRenderer(world, gameHeight.toInt(), midPointY)
+        world.setRenderer(renderer)
     }
 
-    @Override
-    public void render(float delta) {
-        runTime += delta;
-        world.update(delta);
-        renderer.render(delta, runTime);
+    override fun render(delta: Float) {
+        runTime += delta
+        world.update(delta)
+        renderer.render(delta, runTime)
     }
 
-    @Override
-    public void resize(int width, int height) {
+    override fun resize(width: Int, height: Int) {
     }
 
-    @Override
-    public void show() {
+    override fun show() {
     }
 
-    @Override
-    public void hide() {
+    override fun hide() {
     }
 
-    @Override
-    public void pause() {
+    override fun pause() {
     }
 
-    @Override
-    public void resume() {
+    override fun resume() {
     }
 
-    @Override
-    public void dispose() {
+    override fun dispose() {
     }
 }
