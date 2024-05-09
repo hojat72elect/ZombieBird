@@ -1,5 +1,5 @@
 package ca.hojat.zbird.tweenaccessors
 
-class Value {
+class AssetValue {
     var value: Float = 1f
 }

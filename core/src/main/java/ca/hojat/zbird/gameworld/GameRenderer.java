@@ -16,7 +16,7 @@ import aurelienribon.tweenengine.TweenManager;
 import ca.hojat.zbird.gameobjects.Bird;
 import ca.hojat.zbird.gameobjects.Grass;
 import ca.hojat.zbird.gameobjects.Pipe;
-import ca.hojat.zbird.tweenaccessors.Value;
+import ca.hojat.zbird.tweenaccessors.AssetValue;
 import ca.hojat.zbird.tweenaccessors.ValueAccessor;
 import ca.hojat.zbird.ui.SimpleButton;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
@@ -43,7 +43,7 @@ public class GameRenderer {
 
     // Tween stuff
     private TweenManager manager;
-    private final Value alpha = new Value();
+    private final AssetValue alpha = new AssetValue();
 
     // Buttons
     private final List<ca.hojat.zbird.ui.SimpleButton> menuButtons;
@@ -300,7 +300,7 @@ public class GameRenderer {
     public void prepareTransition(int r, int g, int b, float duration) {
         transitionColor.set(r / 255.0f, g / 255.0f, b / 255.0f, 1);
         alpha.setValue(1);
-        Tween.registerAccessor(Value.class, new ValueAccessor());
+        Tween.registerAccessor(AssetValue.class, new ValueAccessor());
         manager = new TweenManager();
         Tween.to(alpha, -1, duration).target(0)
                 .ease(TweenEquations.easeOutQuad).start(manager);

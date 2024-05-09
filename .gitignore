@@ -6,3 +6,4 @@ core/build/
 android/build/
 lwjgl3/build/
 android/libs/
+build/
