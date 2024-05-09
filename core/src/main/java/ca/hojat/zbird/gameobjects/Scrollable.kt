@@ -1,66 +1,55 @@
-package ca.hojat.zbird.gameobjects;
+package ca.hojat.zbird.gameobjects
 
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector2
 
-public class Scrollable {
+open class Scrollable(
+    x: Float,
+    y: Float,
+    @JvmField val width: Int,
+    @JvmField var height: Int,
+    scrollSpeed: Float
+) {
 
-    // Protected is similar to private, but allows inheritance by subclasses.
-    protected Vector2 position;
-    protected Vector2 velocity;
-    protected int width;
-    protected int height;
-    protected boolean isScrolledLeft;
+    @JvmField
+    protected var position = Vector2(x, y)
 
-    public Scrollable(float x, float y, int width, int height, float scrollSpeed) {
-        position = new Vector2(x, y);
-        velocity = new Vector2(scrollSpeed, 0);
-        this.width = width;
-        this.height = height;
-        isScrolledLeft = false;
-    }
+    @JvmField
+    protected var velocity = Vector2(scrollSpeed, 0f)
 
-    public void update(float delta) {
-        position.add(velocity.cpy().scl(delta));
+    // Getters for instance variables
+    var isScrolledLeft = false
+        protected set
+
+    open fun update(delta: Float) {
+        position.add(velocity.cpy().scl(delta))
 
         // If the Scrollable object is no longer visible:
         if (position.x + width < 0) {
-            isScrolledLeft = true;
+            isScrolledLeft = true
         }
     }
 
-    // Reset: Should Override in subclass for more specific behavior.
-    public void reset(float newX) {
-        position.x = newX;
-        isScrolledLeft = false;
+   open fun getWidth() = width
+   open fun getHeight() = height
+
+    /**
+     * Reset: Should Override in subclass for more specific behavior.
+     */
+    open fun reset(newX: Float) {
+        position.x = newX
+        isScrolledLeft = false
     }
 
-    public void stop() {
-        velocity.x = 0;
+    fun stop() {
+        velocity.x = 0f
     }
 
-    // Getters for instance variables
-    public boolean isScrolledLeft() {
-        return isScrolledLeft;
-    }
+    val tailX: Float
+        get() = position.x + width
 
-    public float getTailX() {
-        return position.x + width;
-    }
+    val x: Float
+        get() = position.x
 
-    public float getX() {
-        return position.x;
-    }
-
-    public float getY() {
-        return position.y;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
+    val y: Float
+        get() = position.y
 }
