@@ -6,21 +6,26 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import org.jetbrains.annotations.Nullable;
+
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenEquations;
 import aurelienribon.tweenengine.TweenManager;
 import ca.hojat.zbird.TweenAccessors.SpriteAccessor;
+import ca.hojat.zbird.ZombieFlappyBird;
 import ca.hojat.zbird.zbhelpers.AssetLoader;
-
 
 public class SplashScreen implements Screen {
 
+    private final ZombieFlappyBird game;
+    @Nullable
     private TweenManager manager;
+    @Nullable
     private SpriteBatch batcher;
+    @Nullable
     private Sprite sprite;
-    private ca.hojat.zbird.ZombieFlappyBird game;
 
     public SplashScreen(ca.hojat.zbird.ZombieFlappyBird game) {
         this.game = game;
