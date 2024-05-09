@@ -1,13 +1,13 @@
 package ca.hojat.zbird.zbhelpers;
 
-import ca.hojat.zbird.gameworld.GameWorld;
-import ca.hojat.zbird.gameobjects.Bird;
-import ca.hojat.zbird.ui.SimpleButton;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-
+import ca.hojat.zbird.ui.SimpleButton;
 import java.util.ArrayList;
 import java.util.List;
+
+import ca.hojat.zbird.gameobjects.Bird;
+import ca.hojat.zbird.gameworld.GameWorld;
 
 public class InputHandler implements InputProcessor {
 
@@ -136,7 +136,7 @@ public class InputHandler implements InputProcessor {
         return (int) (screenY / scaleFactorY);
     }
 
-    public List<SimpleButton> getMenuButtons() {
+    public List<ca.hojat.zbird.ui.SimpleButton> getMenuButtons() {
         return menuButtons;
     }
 }

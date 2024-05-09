@@ -46,7 +46,7 @@ public class GameRenderer {
     private final Value alpha = new Value();
 
     // Buttons
-    private final List<SimpleButton> menuButtons;
+    private final List<ca.hojat.zbird.ui.SimpleButton> menuButtons;
     private final Color transitionColor;
 
     public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
