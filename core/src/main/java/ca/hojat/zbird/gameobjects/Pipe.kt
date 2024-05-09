@@ -1,96 +1,83 @@
-package ca.hojat.zbird.gameobjects;
+package ca.hojat.zbird.gameobjects
 
-import com.badlogic.gdx.math.Intersector;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Intersector
+import com.badlogic.gdx.math.Rectangle
+import java.util.Random
 
-import java.util.Random;
 
-public class Pipe extends Scrollable {
+class Pipe(
+    x: Float,
+    y: Float,
+    width: Int,
+    height: Int,
+    scrollSpeed: Float,
+    private val groundY: Float
+) :
+    Scrollable(
+        x,
+        y,
+        width,
+        height,
+        scrollSpeed
+    ) {
 
-    private final Random r;
+    private val r = Random()
+    private val skullUp = Rectangle()
+    private val skullDown = Rectangle()
+    private val barUp = Rectangle()
+    private val barDown = Rectangle()
 
-    private final Rectangle skullUp;
-    private final Rectangle skullDown;
-    private final Rectangle barUp;
-    private final Rectangle barDown;
+    var isScored = false
 
-    public static final int VERTICAL_GAP = 45;
-    public static final int SKULL_WIDTH = 24;
-    public static final int SKULL_HEIGHT = 11;
-    private final float groundY;
 
-    private boolean isScored = false;
-
-    // When Pipe's constructor is invoked, invoke the super (Scrollable)
-    // constructor
-    public Pipe(float x, float y, int width, int height, float scrollSpeed,
-                float groundY) {
-        super(x, y, width, height, scrollSpeed);
-        // Initialize a Random object for Random number generation
-        r = new Random();
-        skullUp = new Rectangle();
-        skullDown = new Rectangle();
-        barUp = new Rectangle();
-        barDown = new Rectangle();
-
-        this.groundY = groundY;
+    override fun update(delta: Float) {
+        super.update(delta)
+        barUp.set(position.x, position.y, width.toFloat(), height.toFloat())
+        barDown.set(
+            position.x,
+            position.y + height + VERTICAL_GAP,
+            width.toFloat(),
+            groundY - (position.y + height + VERTICAL_GAP)
+        )
+        skullUp.set(
+            position.x - (SKULL_WIDTH - width) / 2,
+            position.y + height - SKULL_HEIGHT,
+            SKULL_WIDTH.toFloat(),
+            SKULL_HEIGHT.toFloat()
+        )
+        skullDown.set(
+            position.x - (SKULL_WIDTH - width) / 2,
+            barDown.y,
+            SKULL_WIDTH.toFloat(),
+            SKULL_HEIGHT.toFloat()
+        )
     }
 
-    @Override
-    public void update(float delta) {
-        // Call the update method in the superclass (Scrollable)
-        super.update(delta);
-
-        // The set() method allows you to set the top left corner's x, y
-        // coordinates,
-        // along with the width and height of the rectangle
-
-        barUp.set(position.x, position.y, width, height);
-        barDown.set(position.x, position.y + height + VERTICAL_GAP, width,
-                groundY - (position.y + height + VERTICAL_GAP));
-
-        // Our skull width is 24. The bar is only 22 pixels wide. So the skull
-        // must be shifted by 1 pixel to the left (so that the skull is centered
-        // with respect to its bar).
-
-        // This shift is equivalent to: (SKULL_WIDTH - width) / 2
-        skullUp.set(position.x - (float) (SKULL_WIDTH - width) / 2, position.y + height
-                - SKULL_HEIGHT, SKULL_WIDTH, SKULL_HEIGHT);
-        skullDown.set(position.x - (float) (SKULL_WIDTH - width) / 2, barDown.y,
-                SKULL_WIDTH, SKULL_HEIGHT);
-
+    override fun reset(newX: Float) {
+        super.reset(newX)
+        height = r.nextInt(90) + 15
+        isScored = false
     }
 
-    @Override
-    public void reset(float newX) {
-        // Call the reset method in the superclass (Scrollable)
-        super.reset(newX);
-        // Change the height to a random number
-        height = r.nextInt(90) + 15;
-        isScored = false;
+    fun onRestart(x: Float, scrollSpeed: Float) {
+        velocity.x = scrollSpeed
+        reset(x)
     }
 
-    public void onRestart(float x, float scrollSpeed) {
-        velocity.x = scrollSpeed;
-        reset(x);
-    }
-
-    public boolean collides(Bird bird) {
-        if (position.x < bird.getX() + bird.getWidth()) {
-            return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
-                    || Intersector.overlaps(bird.getBoundingCircle(), barDown)
-                    || Intersector.overlaps(bird.getBoundingCircle(), skullUp) || Intersector
-                    .overlaps(bird.getBoundingCircle(), skullDown));
+    fun collides(bird: Bird): Boolean {
+        if (position.x < bird.x + bird.width) {
+            return (Intersector.overlaps(bird.boundingCircle, barUp)
+                    || Intersector.overlaps(bird.boundingCircle, barDown)
+                    || Intersector.overlaps(bird.boundingCircle, skullUp)
+                    || Intersector.overlaps(bird.boundingCircle, skullDown))
         }
-        return false;
+        return false
     }
 
-    public boolean isScored() {
-        return isScored;
-    }
+    companion object {
+        const val VERTICAL_GAP = 45
+        const val SKULL_WIDTH = 24
+        const val SKULL_HEIGHT = 11
 
-    public void setScored(boolean b) {
-        isScored = b;
     }
-
 }
