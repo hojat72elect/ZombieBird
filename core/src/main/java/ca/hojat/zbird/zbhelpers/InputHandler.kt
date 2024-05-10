@@ -1,142 +1,97 @@
-package ca.hojat.zbird.zbhelpers;
+package ca.hojat.zbird.zbhelpers
 
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
-import ca.hojat.zbird.ui.SimpleButton;
-import java.util.ArrayList;
-import java.util.List;
+import ca.hojat.zbird.gameworld.GameWorld
+import ca.hojat.zbird.ui.SimpleButton
+import com.badlogic.gdx.Input
+import com.badlogic.gdx.InputProcessor
 
-import ca.hojat.zbird.gameobjects.Bird;
-import ca.hojat.zbird.gameworld.GameWorld;
+class InputHandler(
+    private val myWorld: GameWorld,
+    private val scaleFactorX: Float,
+    private val scaleFactorY: Float
+) :
+    InputProcessor {
 
-public class InputHandler implements InputProcessor {
 
-    private final Bird myBird;
-    private final GameWorld myWorld;
+    private val myBird = myWorld.bird
+    private val menuButtons = arrayListOf<SimpleButton>()
+    private val playButton = SimpleButton(
+        136f / 2 - (AssetLoader.playButtonUp.regionWidth / 2f),
+        myWorld.midPointY + 50f,
+        29f,
+        16f,
+        AssetLoader.playButtonUp,
+        AssetLoader.playButtonDown
+    )
 
-    private final List<SimpleButton> menuButtons;
-
-    private final SimpleButton playButton;
-
-    private final float scaleFactorX;
-    private final float scaleFactorY;
-
-    public InputHandler(GameWorld myWorld, float scaleFactorX,
-                        float scaleFactorY) {
-        this.myWorld = myWorld;
-        myBird = myWorld.getBird();
-
-        int midPointY = myWorld.getMidPointY();
-
-        this.scaleFactorX = scaleFactorX;
-        this.scaleFactorY = scaleFactorY;
-
-        menuButtons = new ArrayList<>();
-        playButton = new SimpleButton(
-                 136f / 2 - (AssetLoader.playButtonUp.getRegionWidth() / 2f),
-                midPointY + 50, 29, 16, AssetLoader.playButtonUp,
-                AssetLoader.playButtonDown);
-        menuButtons.add(playButton);
+    init {
+        menuButtons.add(playButton)
     }
 
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        screenX = scaleX(screenX);
-        screenY = scaleY(screenY);
+    fun getMenuButtons() = menuButtons
 
-        if (myWorld.isMenu()) {
-            playButton.isTouchDown(screenX, screenY);
-        } else if (myWorld.isReady()) {
-            myWorld.start();
-            myBird.onClick();
-        } else if (myWorld.isRunning()) {
-            myBird.onClick();
-        }
-
-        if (myWorld.isGameOver() || myWorld.isHighScore()) {
-            myWorld.restart();
-        }
-
-        return true;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        screenX = scaleX(screenX);
-        screenY = scaleY(screenY);
-
-        if (myWorld.isMenu()) {
-            if (playButton.isTouchUp(screenX, screenY)) {
-                myWorld.ready();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
+    override fun keyDown(keycode: Int): Boolean {
 
         // Can now use Space Bar to play the game
         if (keycode == Input.Keys.SPACE) {
 
-            if (myWorld.isMenu()) {
-                myWorld.ready();
-            } else if (myWorld.isReady()) {
-                myWorld.start();
+
+            if (myWorld.isMenu) {
+                myWorld.ready()
+            } else if (myWorld.isReady) {
+                myWorld.start()
             }
 
-            myBird.onClick();
+            myBird.onClick()
 
-            if (myWorld.isGameOver() || myWorld.isHighScore()) {
-                myWorld.restart();
+            if (myWorld.isGameOver || myWorld.isHighScore) {
+                myWorld.restart()
             }
+        }
+        return false
+    }
 
+    override fun keyUp(keycode: Int) = false
+
+    override fun keyTyped(character: Char) = false
+
+    override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+
+        if (myWorld.isMenu) {
+            playButton.isTouchDown(scaleX(screenX), scaleY(screenY))
+        } else if (myWorld.isReady) {
+            myWorld.start()
+            myBird.onClick()
+        } else if (myWorld.isRunning) {
+            myBird.onClick()
         }
 
-        return false;
+        if (myWorld.isGameOver || myWorld.isHighScore) {
+            myWorld.restart()
+        }
+
+        return true
     }
 
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
+    override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+        if (myWorld.isMenu) {
+            if (playButton.isTouchUp(scaleX(screenX), scaleY(screenY))) {
+                myWorld.ready()
+                return true
+            }
+        }
+
+        return false
     }
 
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
+    override fun touchCancelled(screenX: Int, screenY: Int, pointer: Int, button: Int) = false
 
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
+    override fun touchDragged(screenX: Int, screenY: Int, pointer: Int) = false
 
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
+    override fun mouseMoved(screenX: Int, screenY: Int) = false
 
-    @Override
-    public boolean scrolled(float amountX, float amountY) {
-        return false;
-    }
+    override fun scrolled(amountX: Float, amountY: Float) = false
 
-    private int scaleX(int screenX) {
-        return (int) (screenX / scaleFactorX);
-    }
-
-    private int scaleY(int screenY) {
-        return (int) (screenY / scaleFactorY);
-    }
-
-    public List<ca.hojat.zbird.ui.SimpleButton> getMenuButtons() {
-        return menuButtons;
-    }
+    private fun scaleX(screenX: Int) = (screenX / scaleFactorX).toInt()
+    private fun scaleY(screenY: Int) = (screenY / scaleFactorY).toInt()
 }
