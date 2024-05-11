@@ -1,139 +1,114 @@
-package ca.hojat.zbird.gameobjects;
+package ca.hojat.zbird.gameobjects
+
+import ca.hojat.zbird.zbhelpers.AssetLoader
+import com.badlogic.gdx.math.Circle
+import com.badlogic.gdx.math.Vector2
+import kotlin.math.sin
+
+class Bird(
+     x: Float,
+    y: Float,
+    private val _width: Int,
+    private val _height: Int
+) {
+
+    val width: Int
+        get() = this._width
+
+    val height: Int
+        get() = this._height
+
+    private val position = Vector2(x, y)
+    private val velocity = Vector2(0f, 0f)
+    private val acceleration = Vector2(0f, 460f)
+    private var rotation = 0f
 
 
-import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Vector2;
-import ca.hojat.zbird.zbhelpers.AssetLoader;
+    private val originalY = y
+    private var isAlive = true
+    private val boundingCircle = Circle()
 
-public class Bird {
-    private final Vector2 position;
-    private final Vector2 velocity;
-    private final Vector2 acceleration;
 
-    private float rotation;
-    private final int width;
-    private final float height;
+    fun update(delta: Float) {
+        velocity.add(acceleration.cpy().scl(delta))
+        if (velocity.y > 200)
+            velocity.y = 200f
 
-    private final float originalY;
-
-    private boolean isAlive;
-
-    private final Circle boundingCircle;
-
-    public Bird(float x, float y, int width, int height) {
-        this.width = width;
-        this.height = height;
-        this.originalY = y;
-        position = new Vector2(x, y);
-        velocity = new Vector2(0, 0);
-        acceleration = new Vector2(0, 460);
-        boundingCircle = new Circle();
-        isAlive = true;
-    }
-
-    public void update(float delta) {
-
-        velocity.add(acceleration.cpy().scl(delta));
-
-        if (velocity.y > 200) {
-            velocity.y = 200;
-        }
-
-        // CEILING CHECK
+        // Don't let the bird go above the ceiling
         if (position.y < -13) {
-            position.y = -13;
-            velocity.y = 0;
+            position.y = -13f
+            velocity.y = 0f
         }
+        position.add(velocity.cpy().scl(delta))
 
-        position.add(velocity.cpy().scl(delta));
+        /**
+         * Set the circle's center to be (9, 6) with respect to the bird.
+         * Set the circle's radius to be 6.5f.
+         */
+        boundingCircle.set(position.x + 9, position.y + 6, 6.5f)
 
-        // Set the circle's center to be (9, 6) with respect to the bird.
-        // Set the circle's radius to be 6.5f;
-        boundingCircle.set(position.x + 9, position.y + 6, 6.5f);
 
         // Rotate counterclockwise
         if (velocity.y < 0) {
-            rotation -= 600 * delta;
+            rotation -= 600 * delta
 
             if (rotation < -20) {
-                rotation = -20;
+                rotation = -20f
             }
         }
+
 
         // Rotate clockwise
-        if (isFalling() || !isAlive) {
-            rotation += 480 * delta;
+        if (isFalling() || isAlive.not()) {
+            rotation += 480 * delta
             if (rotation > 90) {
-                rotation = 90;
+                rotation = 90f
             }
-
         }
 
     }
 
-    public void updateReady(float runTime) {
-        position.y = 2 * (float) Math.sin(7 * runTime) + originalY;
+    fun updateReady(runTime: Float) {
+        position.y = 2 * sin((7 * runTime).toDouble()).toFloat() + originalY
     }
 
-    public boolean isFalling() {
-        return velocity.y > 110;
-    }
+    fun isFalling() = velocity.y > 110
 
-    public boolean shouldntFlap() {
-        return velocity.y > 70 || !isAlive;
-    }
+    fun shouldntFlap() = (velocity.y > 70) || (!isAlive)
 
-    public void onClick() {
+    fun onClick() {
         if (isAlive) {
-            AssetLoader.flap.play();
-            velocity.y = -140;
+            AssetLoader.flap.play()
+            velocity.y = -140f
         }
+
     }
 
-    public void die() {
-        isAlive = false;
-        velocity.y = 0;
+    fun die() {
+        isAlive = false
+        velocity.y = 0f
     }
 
-    public void decelerate() {
-        acceleration.y = 0;
+    fun decelerate() {
+        acceleration.y = 0f
     }
 
-    public void onRestart(int y) {
-        rotation = 0;
-        position.y = y;
-        velocity.x = 0;
-        velocity.y = 0;
-        acceleration.x = 0;
-        acceleration.y = 460;
-        isAlive = true;
+    fun onRestart(y: Int) {
+        rotation = 0f
+        position.y = y.toFloat()
+        velocity.x = 0f
+        velocity.y = 0f
+        acceleration.x = 0f
+        acceleration.y = 460f
+        isAlive = true
     }
 
-    public float getX() {
-        return position.x;
-    }
+    fun getX() = position.x
 
-    public float getY() {
-        return position.y;
-    }
+    fun getY() = position.y
 
-    public float getWidth() {
-        return width;
-    }
+    fun getRotation() = rotation
+    fun getBoundingCircle() = boundingCircle
+    fun isAlive() = isAlive
 
-    public float getHeight() {
-        return height;
-    }
-
-    public float getRotation() {
-        return rotation;
-    }
-
-    public Circle getBoundingCircle() {
-        return boundingCircle;
-    }
-
-    public boolean isAlive() {
-        return isAlive;
-    }
 }

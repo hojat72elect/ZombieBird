@@ -1,7 +1,7 @@
 package ca.hojat.zbird.gameworld;
 
-import ca.hojat.zbird.zbhelpers.AssetLoader;
 import ca.hojat.zbird.gameobjects.Bird;
+import ca.hojat.zbird.zbhelpers.AssetLoader;
 import ca.hojat.zbird.gameobjects.ScrollHandler;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;

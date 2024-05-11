@@ -65,11 +65,11 @@ class Pipe(
     }
 
     fun collides(bird: Bird): Boolean {
-        if (position.x < bird.x + bird.width) {
-            return (Intersector.overlaps(bird.boundingCircle, barUp)
-                    || Intersector.overlaps(bird.boundingCircle, barDown)
-                    || Intersector.overlaps(bird.boundingCircle, skullUp)
-                    || Intersector.overlaps(bird.boundingCircle, skullDown))
+        if (position.x < bird.getX() + bird.width) {
+            return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
+                    || Intersector.overlaps(bird.getBoundingCircle(), barDown)
+                    || Intersector.overlaps(bird.getBoundingCircle(), skullUp)
+                    || Intersector.overlaps(bird.getBoundingCircle(), skullDown))
         }
         return false
     }
