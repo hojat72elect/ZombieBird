@@ -23,8 +23,8 @@ fun main() {
 
 private fun createDefaultConfiguration(): Lwjgl3ApplicationConfiguration {
 
-    val windowWidth = 640
-    val windowHeight = 480
+    val windowWidth = 480
+    val windowHeight = 640
     val icon128 = "libgdx128.png"
     val icon64 = "libgdx64.png"
     val icon32 = "libgdx32.png"
