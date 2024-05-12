@@ -1,154 +1,124 @@
-package ca.hojat.zbird.gameworld;
+package ca.hojat.zbird.gameworld
 
-import ca.hojat.zbird.gameobjects.Bird;
-import ca.hojat.zbird.zbhelpers.AssetLoader;
-import ca.hojat.zbird.gameobjects.ScrollHandler;
-import com.badlogic.gdx.math.Intersector;
-import com.badlogic.gdx.math.Rectangle;
+import ca.hojat.zbird.gameobjects.Bird
+import ca.hojat.zbird.gameobjects.ScrollHandler
+import ca.hojat.zbird.zbhelpers.AssetLoader
+import ca.hojat.zbird.zbhelpers.AssetLoader.getHighScore
+import ca.hojat.zbird.zbhelpers.AssetLoader.setHighScore
+import com.badlogic.gdx.math.Intersector
+import com.badlogic.gdx.math.Rectangle
 
-public class GameWorld {
+class GameWorld(val midPointY: Int) {
+    val bird: Bird
+    val scroller: ScrollHandler
+    private val ground: Rectangle
+    var score: Int = 0
+        private set
+    private var runTime = 0f
+    private var renderer: GameRenderer? = null
 
-    private final Bird bird;
-    private final ScrollHandler scroller;
-    private final Rectangle ground;
-    private int score = 0;
-    private float runTime = 0;
-    private final int midPointY;
-    private GameRenderer renderer;
+    private var currentState: GameState
 
-    private GameState currentState;
-
-    public enum GameState {
+    enum class GameState {
         MENU, READY, RUNNING, GAMEOVER, HIGHSCORE
     }
 
-    public GameWorld(int midPointY) {
-        currentState = GameState.MENU;
-        this.midPointY = midPointY;
-        bird = new Bird(33, midPointY - 5, 17, 12);
+    init {
+        currentState = GameState.MENU
+        bird = Bird(33f, (midPointY - 5).toFloat(), 17, 12)
         // The grass should start 66 pixels below the midPointY
-        scroller = new ScrollHandler(this, midPointY + 66);
-        ground = new Rectangle(0, midPointY + 66, 137, 11);
+        scroller = ScrollHandler(this, (midPointY + 66).toFloat())
+        ground = Rectangle(0f, (midPointY + 66).toFloat(), 137f, 11f)
     }
 
-    public void update(float delta) {
-        runTime += delta;
+    fun update(delta: Float) {
+        runTime += delta
 
-        switch (currentState) {
-            case READY:
-            case MENU:
-                updateReady(delta);
-                break;
-
-            case RUNNING:
-                updateRunning(delta);
-                break;
-            default:
-                break;
+        when (currentState) {
+            GameState.READY, GameState.MENU -> updateReady(delta)
+            GameState.RUNNING -> updateRunning(delta)
+            else -> {}
         }
-
     }
 
-    private void updateReady(float delta) {
-        bird.updateReady(runTime);
-        scroller.updateReady(delta);
+    private fun updateReady(delta: Float) {
+        bird.updateReady(runTime)
+        scroller.updateReady(delta)
     }
 
-    public void updateRunning(float delta) {
+    fun updateRunning(delta: Float) {
+        var delta = delta
         if (delta > .15f) {
-            delta = .15f;
+            delta = .15f
         }
 
-        bird.update(delta);
-        scroller.update(delta);
+        bird.update(delta)
+        scroller.update(delta)
 
         if (scroller.collides(bird) && bird.isAlive()) {
-            scroller.stop();
-            bird.die();
-            AssetLoader.deathSound.play();
-            renderer.prepareTransition(255, 255, 255, .3f);
+            scroller.stop()
+            bird.die()
+            AssetLoader.deathSound!!.play()
+            renderer!!.prepareTransition(255, 255, 255, .3f)
 
-            AssetLoader.fallSound.play();
+            AssetLoader.fallSound!!.play()
         }
 
         if (Intersector.overlaps(bird.getBoundingCircle(), ground)) {
-
             if (bird.isAlive()) {
-                AssetLoader.deathSound.play();
-                renderer.prepareTransition(255, 255, 255, .3f);
+                AssetLoader.deathSound!!.play()
+                renderer!!.prepareTransition(255, 255, 255, .3f)
 
-                bird.die();
+                bird.die()
             }
 
-            scroller.stop();
-            bird.decelerate();
-            currentState = GameState.GAMEOVER;
+            scroller.stop()
+            bird.decelerate()
+            currentState = GameState.GAMEOVER
 
-            if (score > AssetLoader.getHighScore()) {
-                AssetLoader.setHighScore(score);
-                currentState = GameState.HIGHSCORE;
+            if (score > getHighScore()) {
+                setHighScore(score)
+                currentState = GameState.HIGHSCORE
             }
         }
     }
 
-    public Bird getBird() {
-        return bird;
-
+    fun addScore(increment: Int) {
+        score += increment
     }
 
-    public int getMidPointY() {
-        return midPointY;
+    fun start() {
+        currentState = GameState.RUNNING
     }
 
-    public ScrollHandler getScroller() {
-        return scroller;
+    fun ready() {
+        currentState = GameState.READY
+        renderer!!.prepareTransition(0, 0, 0, 1f)
     }
 
-    public int getScore() {
-        return score;
+    fun restart() {
+        score = 0
+        bird.onRestart(midPointY - 5)
+        scroller.onRestart()
+        ready()
     }
 
-    public void addScore(int increment) {
-        score += increment;
-    }
+    val isReady: Boolean
+        get() = currentState == GameState.READY
 
-    public void start() {
-        currentState = GameState.RUNNING;
-    }
+    val isGameOver: Boolean
+        get() = currentState == GameState.GAMEOVER
 
-    public void ready() {
-        currentState = GameState.READY;
-        renderer.prepareTransition(0, 0, 0, 1f);
-    }
+    val isHighScore: Boolean
+        get() = currentState == GameState.HIGHSCORE
 
-    public void restart() {
-        score = 0;
-        bird.onRestart(midPointY - 5);
-        scroller.onRestart();
-        ready();
-    }
+    val isMenu: Boolean
+        get() = currentState == GameState.MENU
 
-    public boolean isReady() {
-        return currentState == GameState.READY;
-    }
+    val isRunning: Boolean
+        get() = currentState == GameState.RUNNING
 
-    public boolean isGameOver() {
-        return currentState == GameState.GAMEOVER;
-    }
-
-    public boolean isHighScore() {
-        return currentState == GameState.HIGHSCORE;
-    }
-
-    public boolean isMenu() {
-        return currentState == GameState.MENU;
-    }
-
-    public boolean isRunning() {
-        return currentState == GameState.RUNNING;
-    }
-
-    public void setRenderer(GameRenderer renderer) {
-        this.renderer = renderer;
+    fun setRenderer(renderer: GameRenderer?) {
+        this.renderer = renderer
     }
 }
