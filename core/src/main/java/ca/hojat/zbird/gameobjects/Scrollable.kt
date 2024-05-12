@@ -5,15 +5,15 @@ import com.badlogic.gdx.math.Vector2
 open class Scrollable(
     x: Float,
     y: Float,
-    @JvmField val width: Int,
-    @JvmField var height: Int,
+     val width: Int,
+     var height: Int,
     scrollSpeed: Float
 ) {
 
-    @JvmField
+
     protected var position = Vector2(x, y)
 
-    @JvmField
+
     protected var velocity = Vector2(scrollSpeed, 0f)
 
     // Getters for instance variables
@@ -28,9 +28,6 @@ open class Scrollable(
             isScrolledLeft = true
         }
     }
-
-   open fun getWidth() = width
-   open fun getHeight() = height
 
     /**
      * Reset: Should Override in subclass for more specific behavior.

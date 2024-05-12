@@ -9,76 +9,34 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 
 object AssetLoader {
-    var texture: Texture? = null
-    var logoTexture: Texture? = null
+    private var texture: Texture? = null
+    private var logoTexture: Texture? = null
     var logo: TextureRegion? = null
-
-    @JvmField
     var zbLogo: TextureRegion? = null
-
-    @JvmField
     var bg: TextureRegion? = null
-
-    @JvmField
     var grass: TextureRegion? = null
-
-    @JvmField
     var bird: TextureRegion? = null
-    var birdDown: TextureRegion? = null
-    var birdUp: TextureRegion? = null
-
-    @JvmField
+    private var birdDown: TextureRegion? = null
+    private var birdUp: TextureRegion? = null
     var skullUp: TextureRegion? = null
-
-    @JvmField
     var skullDown: TextureRegion? = null
-
-    @JvmField
     var bar: TextureRegion? = null
     var playButtonUp: TextureRegion? = null
     var playButtonDown: TextureRegion? = null
-
-    @JvmField
     var ready: TextureRegion? = null
-
-    @JvmField
     var gameOver: TextureRegion? = null
-
-    @JvmField
     var highScore: TextureRegion? = null
-
-    @JvmField
     var scoreboard: TextureRegion? = null
-
-    @JvmField
     var star: TextureRegion? = null
-
-    @JvmField
     var noStar: TextureRegion? = null
-
-    @JvmField
     var retry: TextureRegion? = null
-
-    @JvmField
     var birdAnimation: Animation<TextureRegion>? = null
-
-    @JvmField
     var deathSound: Sound? = null
     var flappingSound: Sound? = null
-
-    @JvmField
     var coinSound: Sound? = null
-
-    @JvmField
     var fallSound: Sound? = null
-
-    @JvmField
     var font: BitmapFont? = null
-
-    @JvmField
     var shadow: BitmapFont? = null
-
-    @JvmField
     var whiteFont: BitmapFont? = null
     private var prefs: Preferences? = null
 
@@ -170,12 +128,10 @@ object AssetLoader {
         }
     }
 
-    @JvmStatic
     fun getHighScore(): Int {
         return prefs!!.getInteger("highScore")
     }
 
-    @JvmStatic
     fun setHighScore(`val`: Int) {
         prefs!!.putInteger("highScore", `val`)
         prefs!!.flush()

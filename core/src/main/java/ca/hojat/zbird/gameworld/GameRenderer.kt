@@ -110,69 +110,69 @@ class GameRenderer(private val myWorld: GameWorld, gameHeight: Int, private val 
         // Draw the grass
         batcher.draw(
             grass, frontGrass!!.x, frontGrass!!.y,
-            frontGrass!!.getWidth().toFloat(), frontGrass!!.getHeight().toFloat()
+            frontGrass!!.width.toFloat(), frontGrass!!.height.toFloat()
         )
         batcher.draw(
             grass, backGrass!!.x, backGrass!!.y,
-            backGrass!!.getWidth().toFloat(), backGrass!!.getHeight().toFloat()
+            backGrass!!.width.toFloat(), backGrass!!.height.toFloat()
         )
     }
 
     private fun drawSkulls() {
         batcher.draw(
             skullUp, pipe1!!.x - 1,
-            pipe1!!.y + pipe1!!.getHeight() - 14, 24f, 14f
+            pipe1!!.y + pipe1!!.height - 14, 24f, 14f
         )
         batcher.draw(
             skullDown, pipe1!!.x - 1,
-            pipe1!!.y + pipe1!!.getHeight() + 45, 24f, 14f
+            pipe1!!.y + pipe1!!.height + 45, 24f, 14f
         )
 
         batcher.draw(
             skullUp, pipe2!!.x - 1,
-            pipe2!!.y + pipe2!!.getHeight() - 14, 24f, 14f
+            pipe2!!.y + pipe2!!.height - 14, 24f, 14f
         )
         batcher.draw(
             skullDown, pipe2!!.x - 1,
-            pipe2!!.y + pipe2!!.getHeight() + 45, 24f, 14f
+            pipe2!!.y + pipe2!!.height + 45, 24f, 14f
         )
 
         batcher.draw(
             skullUp, pipe3!!.x - 1,
-            pipe3!!.y + pipe3!!.getHeight() - 14, 24f, 14f
+            pipe3!!.y + pipe3!!.height - 14, 24f, 14f
         )
         batcher.draw(
             skullDown, pipe3!!.x - 1,
-            pipe3!!.y + pipe3!!.getHeight() + 45, 24f, 14f
+            pipe3!!.y + pipe3!!.height + 45, 24f, 14f
         )
     }
 
     private fun drawPipes() {
         batcher.draw(
-            bar, pipe1!!.x, pipe1!!.y, pipe1!!.getWidth().toFloat(),
-            pipe1!!.getHeight().toFloat()
+            bar, pipe1!!.x, pipe1!!.y, pipe1!!.width.toFloat(),
+            pipe1!!.height.toFloat()
         )
         batcher.draw(
-            bar, pipe1!!.x, pipe1!!.y + pipe1!!.getHeight() + 45,
-            pipe1!!.getWidth().toFloat(), (midPointY + 66 - (pipe1!!.getHeight() + 45)).toFloat()
-        )
-
-        batcher.draw(
-            bar, pipe2!!.x, pipe2!!.y, pipe2!!.getWidth().toFloat(),
-            pipe2!!.getHeight().toFloat()
-        )
-        batcher.draw(
-            bar, pipe2!!.x, pipe2!!.y + pipe2!!.getHeight() + 45,
-            pipe2!!.getWidth().toFloat(), (midPointY + 66 - (pipe2!!.getHeight() + 45)).toFloat()
+            bar, pipe1!!.x, pipe1!!.y + pipe1!!.height + 45,
+            pipe1!!.width.toFloat(), (midPointY + 66 - (pipe1!!.height + 45)).toFloat()
         )
 
         batcher.draw(
-            bar, pipe3!!.x, pipe3!!.y, pipe3!!.getWidth().toFloat(),
-            pipe3!!.getHeight().toFloat()
+            bar, pipe2!!.x, pipe2!!.y, pipe2!!.width.toFloat(),
+            pipe2!!.height.toFloat()
         )
         batcher.draw(
-            bar, pipe3!!.x, pipe3!!.y + pipe3!!.getHeight() + 45,
-            pipe3!!.getWidth().toFloat(), (midPointY + 66 - (pipe3!!.getHeight() + 45)).toFloat()
+            bar, pipe2!!.x, pipe2!!.y + pipe2!!.height + 45,
+            pipe2!!.width.toFloat(), (midPointY + 66 - (pipe2!!.height + 45)).toFloat()
+        )
+
+        batcher.draw(
+            bar, pipe3!!.x, pipe3!!.y, pipe3!!.width.toFloat(),
+            pipe3!!.height.toFloat()
+        )
+        batcher.draw(
+            bar, pipe3!!.x, pipe3!!.y + pipe3!!.height + 45,
+            pipe3!!.width.toFloat(), (midPointY + 66 - (pipe3!!.height + 45)).toFloat()
         )
     }
 

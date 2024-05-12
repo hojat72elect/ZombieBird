@@ -4,34 +4,20 @@ import ca.hojat.zbird.gameworld.GameWorld
 import ca.hojat.zbird.zbhelpers.AssetLoader
 
 class ScrollHandler(private val gameWorld: GameWorld, yPos: Float) {
-    @JvmField
-    val frontGrass: Grass
-    @JvmField
-    val backGrass: Grass
-    @JvmField
-    val pipe1: Pipe
-    @JvmField
-    val pipe2: Pipe
-    @JvmField
-    val pipe3: Pipe
-
-    init {
-        frontGrass = Grass(0f, yPos, 143, 11, SCROLL_SPEED.toFloat())
-        backGrass = Grass(
-            frontGrass.tailX, yPos, 143, 11,
-            SCROLL_SPEED.toFloat()
-        )
-
-        pipe1 = Pipe(210f, 0f, 22, 60, SCROLL_SPEED.toFloat(), yPos)
-        pipe2 = Pipe(
-            pipe1.tailX + PIPE_GAP, 0f, 22, 70, SCROLL_SPEED.toFloat(),
-            yPos
-        )
-        pipe3 = Pipe(
-            pipe2.tailX + PIPE_GAP, 0f, 22, 60, SCROLL_SPEED.toFloat(),
-            yPos
-        )
-    }
+    val frontGrass: Grass = Grass(0f, yPos, 143, 11, SCROLL_SPEED.toFloat())
+    val backGrass: Grass = Grass(
+        frontGrass.tailX, yPos, 143, 11,
+        SCROLL_SPEED.toFloat()
+    )
+    val pipe1: Pipe = Pipe(210f, 0f, 22, 60, SCROLL_SPEED.toFloat(), yPos)
+    val pipe2: Pipe = Pipe(
+        pipe1.tailX + PIPE_GAP, 0f, 22, 70, SCROLL_SPEED.toFloat(),
+        yPos
+    )
+    val pipe3: Pipe = Pipe(
+        pipe2.tailX + PIPE_GAP, 0f, 22, 60, SCROLL_SPEED.toFloat(),
+        yPos
+    )
 
     fun updateReady(delta: Float) {
         frontGrass.update(delta)
@@ -81,21 +67,21 @@ class ScrollHandler(private val gameWorld: GameWorld, yPos: Float) {
 
     fun collides(bird: Bird): Boolean {
         if (!pipe1.isScored
-            && pipe1.x + (pipe1.getWidth() / 2f) < bird.getX()
+            && pipe1.x + (pipe1.width / 2f) < bird.getX()
             + bird.width
         ) {
             addScore()
             pipe1.isScored = true
             AssetLoader.coinSound!!.play()
         } else if (!pipe2.isScored
-            && pipe2.x + (pipe2.getWidth() / 2f) < bird.getX()
+            && pipe2.x + (pipe2.width / 2f) < bird.getX()
             + bird.width
         ) {
             addScore()
             pipe2.isScored = true
             AssetLoader.coinSound!!.play()
         } else if (!pipe3.isScored
-            && pipe3.x + (pipe3.getWidth() / 2f) < bird.getX()
+            && pipe3.x + (pipe3.width / 2f) < bird.getX()
             + bird.width
         ) {
             addScore()
