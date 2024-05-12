@@ -180,7 +180,7 @@ class GameRenderer(private val myWorld: GameWorld, gameHeight: Int, private val 
         batcher.draw(
             birdAnimation!!.getKeyFrame(runTime) as TextureRegion, 59f, bird!!.getY() - 15,
             bird!!.width / 2.0f, bird!!.height / 2.0f,
-            bird!!.width.toFloat(), bird!!.height.toFloat(), 1f, 1f, bird!!.getRotation()
+            bird!!.width.toFloat(), bird!!.height.toFloat(), 1f, 1f, bird!!.rotation
         )
     }
 
@@ -189,14 +189,14 @@ class GameRenderer(private val myWorld: GameWorld, gameHeight: Int, private val 
             batcher.draw(
                 birdMid, bird!!.getX(), bird!!.getY(),
                 bird!!.width / 2.0f, bird!!.height / 2.0f,
-                bird!!.width.toFloat(), bird!!.height.toFloat(), 1f, 1f, bird!!.getRotation()
+                bird!!.width.toFloat(), bird!!.height.toFloat(), 1f, 1f, bird!!.rotation
             )
         } else {
             batcher.draw(
                 birdAnimation!!.getKeyFrame(runTime) as TextureRegion, bird!!.getX(),
                 bird!!.getY(), bird!!.width / 2.0f,
                 bird!!.height / 2.0f, bird!!.width.toFloat(), bird!!.height.toFloat(),
-                1f, 1f, bird!!.getRotation()
+                1f, 1f, bird!!.rotation
             )
         }
     }

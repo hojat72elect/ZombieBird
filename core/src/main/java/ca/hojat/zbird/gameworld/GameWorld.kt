@@ -46,7 +46,7 @@ class GameWorld(val midPointY: Int) {
         scroller.updateReady(delta)
     }
 
-    fun updateRunning(delta: Float) {
+    private fun updateRunning(delta: Float) {
         var delta = delta
         if (delta > .15f) {
             delta = .15f
@@ -55,7 +55,7 @@ class GameWorld(val midPointY: Int) {
         bird.update(delta)
         scroller.update(delta)
 
-        if (scroller.collides(bird) && bird.isAlive()) {
+        if (scroller.collides(bird) && bird.isAlive) {
             scroller.stop()
             bird.die()
             AssetLoader.deathSound!!.play()
@@ -64,8 +64,8 @@ class GameWorld(val midPointY: Int) {
             AssetLoader.fallSound!!.play()
         }
 
-        if (Intersector.overlaps(bird.getBoundingCircle(), ground)) {
-            if (bird.isAlive()) {
+        if (Intersector.overlaps(bird.boundingCircle, ground)) {
+            if (bird.isAlive) {
                 AssetLoader.deathSound!!.play()
                 renderer!!.prepareTransition(255, 255, 255, .3f)
 
