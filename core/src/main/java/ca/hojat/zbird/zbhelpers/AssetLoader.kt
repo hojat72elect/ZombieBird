@@ -40,6 +40,9 @@ object AssetLoader {
     var whiteFont: BitmapFont? = null
     private var prefs: Preferences? = null
 
+    /**
+     * load all the required assets for the game.
+     */
     fun load() {
         logoTexture = Texture(Gdx.files.internal("logo.png"))
         logoTexture!!.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
@@ -128,12 +131,11 @@ object AssetLoader {
         }
     }
 
-    fun getHighScore(): Int {
-        return prefs!!.getInteger("highScore")
-    }
+    fun getHighScore() = prefs!!.getInteger("highScore")
 
-    fun setHighScore(`val`: Int) {
-        prefs!!.putInteger("highScore", `val`)
+
+    fun setHighScore(newHighScore: Int) {
+        prefs!!.putInteger("highScore", newHighScore)
         prefs!!.flush()
     }
 

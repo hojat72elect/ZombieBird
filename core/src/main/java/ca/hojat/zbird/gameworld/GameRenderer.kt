@@ -57,7 +57,7 @@ class GameRenderer(private val myWorld: GameWorld, gameHeight: Int, private val 
     private var star: TextureRegion? = null
     private var noStar: TextureRegion? = null
     private var retry: TextureRegion? = null
-    private var birdAnimation: Animation<*>? = null
+    private var birdAnimation: Animation<TextureRegion>? = null
 
     // Tween stuff
     private var manager: TweenManager? = null
