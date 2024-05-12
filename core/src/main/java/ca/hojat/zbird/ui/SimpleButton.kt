@@ -34,7 +34,7 @@ class SimpleButton(
         // It only counts as a touchUp if the button is in a pressed state.
         if (bounds.contains(screenX.toFloat(), screenY.toFloat()) && isPressed) {
             isPressed = false
-            AssetLoader.flappingSound.play()
+            AssetLoader.flappingSound?.play()
             return true
         }
 

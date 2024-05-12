@@ -70,11 +70,11 @@ public class GameRenderer {
     private void initGameObjects() {
         bird = myWorld.getBird();
         ca.hojat.zbird.gameobjects.ScrollHandler scroller = myWorld.getScroller();
-        frontGrass = scroller.getFrontGrass();
-        backGrass = scroller.getBackGrass();
-        pipe1 = scroller.getPipe1();
-        pipe2 = scroller.getPipe2();
-        pipe3 = scroller.getPipe3();
+        frontGrass = scroller.frontGrass;
+        backGrass = scroller.backGrass;
+        pipe1 = scroller.pipe1;
+        pipe2 = scroller.pipe2;
+        pipe3 = scroller.pipe3;
     }
 
     private void initAssets() {

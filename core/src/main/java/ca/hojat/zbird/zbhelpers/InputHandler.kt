@@ -16,12 +16,12 @@ class InputHandler(
     private val myBird = myWorld.bird
     private val menuButtons = arrayListOf<SimpleButton>()
     private val playButton = SimpleButton(
-        136f / 2 - (AssetLoader.playButtonUp.regionWidth / 2f),
+        136f / 2 - (AssetLoader.playButtonUp!!.regionWidth / 2f),
         myWorld.midPointY + 50f,
         29f,
         16f,
-        AssetLoader.playButtonUp,
-        AssetLoader.playButtonDown
+        AssetLoader.playButtonUp!!,
+        AssetLoader.playButtonDown!!
     )
 
     init {

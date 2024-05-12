@@ -78,7 +78,7 @@ class Bird(
 
     fun onClick() {
         if (isAlive) {
-            AssetLoader.flappingSound.play()
+            AssetLoader.flappingSound?.play()
             velocity.y = -140f
         }
 
